@@ -32,7 +32,8 @@ class Account < Transaction
   end
 
   def print_all_transactions
-    Statement.new(@transactions).build
+    statement = Statement.new(@transactions).build
+    print_out(statement)
   end
 
   private
@@ -55,5 +56,9 @@ class Account < Transaction
 
   def save(transaction)
     @transactions << transaction
+  end
+
+  def print_out(statement)
+    statement.split("\n").map {|x|p x}
   end
 end

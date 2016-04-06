@@ -31,6 +31,13 @@ describe Account do
     account.deposit(1000)
     account.deposit(2000)
     account.withdraw(500)
-    expect(account.print_all_transactions).to eq " date || credit || debit || balance \n #{Date.today.to_s} ||  || 500 || 2500 \n #{Date.today.to_s} || 2000 ||  || 3000 \n #{Date.today.to_s} || 1000 ||  || 1000 "
+    expect(account.print_all_transactions).to eq [" date || credit || debit || balance ",  " #{Date.today.to_s} ||  || 500 || 2500 ",  " #{Date.today.to_s} || 2000 ||  || 3000 ",  " #{Date.today.to_s} || 1000 ||  || 1000 "]
+  end
+
+  xit 'should print a statement with just deposits' do
+    account.deposit(1000)
+    account.deposit(2000)
+    account.withdraw(500)
+    expect(account.print_deposit_transcations).to eq " date || credit || debit || balance \n #{Date.today.to_s} ||  || 500 || 2500 \n #{Date.today.to_s} || 2000 ||  || 3000 "
   end
 end

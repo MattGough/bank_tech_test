@@ -5,7 +5,8 @@ class Statement
   end
 
   def build
-    join_lines(add_header(evaluate_transactions))
+    statememt = add_header(evaluate_transactions)
+    join_lines(statememt)
   end
 
   private
