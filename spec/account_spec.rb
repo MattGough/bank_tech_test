@@ -8,4 +8,9 @@ describe Account do
   it 'should have a starting balance of zero' do
     expect(account.balance).to eq(0)
   end
+
+  it 'should increase the balance by the depsoited amount' do
+    account.deposit(50)
+    expect(account.balance).to eq(50)
+  end
 end
