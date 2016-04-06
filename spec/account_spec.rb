@@ -5,4 +5,7 @@ describe Account do
 
   it { is_expected.to respond_to(:deposit).with(1).argument }
 
+  it 'should have a starting balance of zero' do
+    expect(account.balance).to eq(0)
+  end
 end
