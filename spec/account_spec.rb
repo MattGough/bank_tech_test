@@ -13,4 +13,10 @@ describe Account do
     account.deposit(50)
     expect(account.balance).to eq(50)
   end
+
+  it 'should decrease the balance by the withdrawn amount' do
+    account.deposit(50)
+    account.withdraw(30)
+    expect(account.balance).to eq(20)
+  end
 end
