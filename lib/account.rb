@@ -1,4 +1,5 @@
 require 'date'
+require './lib/transaction'
 
 class Account
 
@@ -14,20 +15,20 @@ class Account
   end
 
   def deposit(amount)
+    @transactions << Transaction.new("IN", DATE_TODAY, amount, amount, nil, @balance + amount)
     increase_balance(amount)
-    save_transaction("IN", amount)
   end
 
   def withdraw(amount)
     error_message = "Insufficient funds: balance is £#{@balance}"
     raise error_message if @balance - amount <= OVERDRAFT_LIMIT
+    @transactions << Transaction.new("OUT", DATE_TODAY, amount, nil, amount, @balance - amount)
     decrease_balance(amount)
-    save_transaction("OUT", amount)
   end
 
   def print_last_transaction
     tran = @transactions.last
-    "#{tran[0]}, Date: #{tran[1]}, Amount: £#{tran[2]}, Balance: £#{tran[3]}"
+   "#{tran.type}, Date: #{tran.date}, Amount: £#{tran.amount}, Balance: £#{tran.new_balance}"
   end
 
   private
@@ -38,9 +39,5 @@ class Account
 
   def decrease_balance(amount)
     @balance -= amount
-  end
-
-  def save_transaction(payment_type, amount)
-    @transactions << [payment_type, DATE_TODAY, amount , @balance]
   end
 end

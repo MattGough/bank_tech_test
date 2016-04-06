@@ -26,4 +26,11 @@ describe Account do
     account.deposit(50)
     expect(account.print_last_transaction).to eq("IN, Date: #{Date.today.to_s}, Amount: £50, Balance: £50")
   end
+
+  xit 'should print a statement with all transactions' do
+    account.deposit(1000)
+    account.deposit(2000)
+    account.withdraw(500)
+    expect(account.print_all_transactions).to eq "     date         ||  credit ||  debit || balance \n #{Date.today.to_s} ||         || 500.00 || 2500.00 \n #{Date.today.to_s} || 2000.00 ||        || 3000.00 \n #{Date.today.to_s} || 1000.00 ||        || 1000.00"
+  end
 end
