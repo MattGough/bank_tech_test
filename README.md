@@ -42,11 +42,31 @@ So I can access my money,
 I would like to withdraw money from my Account.
 
 As a customer,
-So I can keep a record of a deposit/withdrawal'
+So I can keep a record of a deposit/withdrawal,
 I would like to be able to print a transactional statement.
 
 As a customer,
 So I can see all my transactions,
 I would like to be able to print a statement with all transactions.
 
+```
+
+### Additional User Stories
+
+```
+As a customer,
+So I can analyze my statement more effectively,
+I would like to be able to see just deposits.
+
+As a customer,
+So I can analyze my statement more effectively,
+I would like to be able to see just withdrawals.
+
+As a customer,
+So I can choose the order of the statement,
+I would like to be able to choose ascending chronological order.
+
+As a customer,
+So I can choose the order of the statement,
+I would like to be able to choose descending chronological order.
 ```
