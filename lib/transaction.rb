@@ -10,4 +10,8 @@ class Transaction
     @debit = debit
     @new_balance = new_balance
   end
+
+  def transaction_parse(tran)
+    "#{tran.type}, Date: #{tran.date}, Amount: £#{tran.amount}, Balance: £#{tran.new_balance}"
+  end
 end
