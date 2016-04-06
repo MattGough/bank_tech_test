@@ -19,4 +19,8 @@ describe Account do
     account.withdraw(30)
     expect(account.balance).to eq(20)
   end
+
+  it 'should stop the user withdrawing money if none is avaialble' do
+    expect{ account.withdraw(50) }.to raise_error "Insufficient funds"
+  end
 end

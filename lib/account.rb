@@ -1,6 +1,7 @@
 class Account
 
   START_BALANCE = 0
+  OVERDRAFT_LIMIT = 0
 
   attr_reader :balance
 
@@ -13,6 +14,7 @@ class Account
   end
 
   def withdraw(amount)
+    raise "Insufficient funds" if @balance <= OVERDRAFT_LIMIT
     @balance -= amount
   end
 end
