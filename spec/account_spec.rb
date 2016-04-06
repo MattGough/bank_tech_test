@@ -21,6 +21,6 @@ describe Account do
   end
 
   it 'should stop the user withdrawing money if none is avaialble' do
-    expect{ account.withdraw(50) }.to raise_error "Insufficient funds"
+    expect{ account.withdraw(50) }.to raise_error "Insufficient funds: balance is 0"
   end
 end

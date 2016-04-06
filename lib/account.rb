@@ -14,7 +14,7 @@ class Account
   end
 
   def withdraw(amount)
-    raise "Insufficient funds" if @balance <= OVERDRAFT_LIMIT
+    raise "Insufficient funds: balance is #{@balance}" if @balance - amount <= OVERDRAFT_LIMIT
     @balance -= amount
   end
 end
