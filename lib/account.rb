@@ -5,7 +5,6 @@ require './lib/statement'
 class Account < Transaction
 
   START_BALANCE = 0
-  OVERDRAFT_LIMIT = 0
   DATE_TODAY = Date.today.to_s
 
   attr_reader :balance, :transactions
@@ -21,8 +20,6 @@ class Account < Transaction
   end
 
   def withdraw(amount)
-    error_message = "Insufficient funds: balance is £#{@balance}"
-    raise error_message if @balance - amount <= OVERDRAFT_LIMIT
     new_withdraw_transaction(amount)
     decrease_balance(amount)
   end
@@ -32,8 +29,7 @@ class Account < Transaction
   end
 
   def print_all_transactions
-    statement = Statement.new(@transactions).build
-    print_out(statement)
+    Statement.new(@transactions).build
   end
 
   private
@@ -56,9 +52,5 @@ class Account < Transaction
 
   def save(transaction)
     @transactions << transaction
-  end
-
-  def print_out(statement)
-    statement.split("\n").map {|x|p x}
   end
 end

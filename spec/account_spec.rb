@@ -18,10 +18,6 @@ describe Account do
     expect(account.balance).to eq(20)
   end
 
-  it 'should stop the user withdrawing money if none is avaialble' do
-    expect{ account.withdraw(50) }.to raise_error "Insufficient funds: balance is £0"
-  end
-
   it 'should print a transaction statememt with date, amount & balance' do
     account.deposit(50)
     expect(account.print_last_transaction).to eq("IN, Date: #{Date.today.to_s}, Amount: £50, Balance: £50")
@@ -31,7 +27,7 @@ describe Account do
     account.deposit(1000)
     account.deposit(2000)
     account.withdraw(500)
-    expect(account.print_all_transactions).to eq [" date || credit || debit || balance ",  " #{Date.today.to_s} ||  || 500 || 2500 ",  " #{Date.today.to_s} || 2000 ||  || 3000 ",  " #{Date.today.to_s} || 1000 ||  || 1000 "]
+    expect(account.print_all_transactions).to eq " date || credit || debit || balance \n #{Date.today.to_s} ||  || 500 || 2500 \n #{Date.today.to_s} || 2000 ||  || 3000 \n #{Date.today.to_s} || 1000 ||  || 1000 "
   end
 
   xit 'should print a statement with just deposits' do

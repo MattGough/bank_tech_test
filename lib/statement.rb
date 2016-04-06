@@ -22,4 +22,5 @@ class Statement
   def join_lines(lines)
     lines.join.chomp
   end
+  
 end
